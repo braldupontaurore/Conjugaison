@@ -1,0 +1,31 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3em;
+    padding: 0 7em;
+    background-color:rgb(190 24 93);
+    height:40px;    
+}
+
+nav a {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-decoration:none;
+    color: antiquewhite;
+    align-items: center;
+
+}
+
+h1{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    font-size: 50px;
+    letter-spacing:5px;
+}
+
+
+
+
