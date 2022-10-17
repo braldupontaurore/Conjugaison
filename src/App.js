@@ -14,8 +14,9 @@ function App() {
     <div className="App">
       <h1>La conjugaison</h1>
       <NavBar></NavBar>
-      <Verbe></Verbe> 
+       
       <Routes>
+        <Route path="/" element={<Verbe/>}/>
         <Route path="/Présent"element={<Present/>}/>
         <Route path="/Futur"element={<Futur/>}/>
         <Route path="/Imparfait"element={<Imparfait/>}/>
