@@ -1,9 +1,30 @@
+import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+
+const URLVerbe = "http://localhost:3001/conjugate?verb=";
+const URLSuite = "&tense=present";
 
 const Verbe = () => {
   const [verbes, setVerbes] = useState("");
+  const [dbVerbe, setDbVerbe]=useState([])
+  const [temps, setTemps] = useState("present");
+  const [temps2, setTemps2]=useState("futur");
 
+  console.log(verbes);
+
+  const handleConjugate = () => {
+    searchVerbe()
+    //requête
+  };
+
+  const searchVerbe = async () => {
+    const response = await axios.get(URLVerbe + verbes + URLSuite)
+    console.log(response.data)
+    setDbVerbe(response.data)
+
+}
   return (
     <div>
       <h1>A quoi ça sert.</h1>
@@ -45,9 +66,19 @@ const Verbe = () => {
       <hr />
       <br />
       <label>Encode le verbe de ton choix:</label>
-      <input type="text"value={verbes}onChange={(e) => setVerbes(e.target.value)}></input>
-      <button type="submit"> Recherche </button>
+      <input
+        type="text"
+        value={verbes}
+        onChange={(e) => setVerbes(e.target.value)}
+      ></input>
+      <select id="nav" value={temps} onChange={(e) => setTemps(e.target.value)}>
+        <option value="present">Présent</option>
+        <option value="futur">Futur</option>
+        <option value="imperfect">Imparfait</option>
+      </select>
+      <button onClick={handleConjugate}> Recherche </button>
       <br />
+      {dbVerbe.map((el) => <p>{el.pronoun} {el.verb}</p> )}
     </div>
   );
 };
